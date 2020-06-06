@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.container {
+  display: flex;
+  justify-content: center;
+}
+.center {
+  width: 800px;
+}
+
+.rowC {
+  display: flex;
+  flex-direction: row;
+}
+.inactive {
+  color: #fff;
+  text-decoration: none;
+}
+/* 
+.active {
+  color: red;
+  text-decoration: none;
+} */
+textarea[type="text"],
+select,
+.tex {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.sel {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.foo {
+  display: block; /* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  /* max-height: 3.6em; */
+  line-height: 1.8em;
+
+  /* Small Devices, Tablets */
+  @media only screen and (min-width: 768px) {
+    width: 75%;
+    background-color: green;
+  }
+
+  /* Medium Devices, Desktops */
+  @media only screen and (min-width: 992px) {
+    width: 50%;
+    background-color: pink;
+  }
+}
+.iconhover {
+  margin: 10;
+
+  float: right;
+  top: 100%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.move {
+  float: right;
+}
+textarea {
+  float: left;
+  width: 100%;
+
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+.col-75 {
+  height: 60%;
+}
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.formdiv {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin: 2em;
+}

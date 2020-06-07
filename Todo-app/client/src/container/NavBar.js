@@ -115,7 +115,7 @@ function NavBar({ auth, logout }) {
             <Link to="/" style={{ textDecoration: "none" }}>
               <Button color="secondary">
                 {" "}
-                <HomeIcon />
+                <HomeIcon size="large" />
                 Todo
               </Button>
             </Link>
@@ -167,7 +167,7 @@ function NavBar({ auth, logout }) {
                   color="primary"
                   to="/new"
                 >
-                  <Fab color="primary" aria-label="add">
+                  <Fab color="secondary" aria-label="add">
                     <AddIcon />
                   </Fab>
                 </Link>

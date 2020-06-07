@@ -5,10 +5,11 @@ import { createTodoasync } from "../store/actions";
 import "date-fns";
 import SaveMessage from "../components/saveMessage";
 import { Redirect } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import Fab from "@material-ui/core/Fab";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import Loading from "../components/loading";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -35,6 +36,7 @@ class TodoForm extends Component {
     e.preventDefault();
 
     this.props.createTodoasync(this.state);
+    this.setState({ title: "", discription: "" });
   };
 
   render() {
@@ -92,9 +94,12 @@ class TodoForm extends Component {
             </MuiPickersUtilsProvider>
           </Grid>{" "}
           <input type="submit" value="Submit" className="sel" />
-          <Button color="secondary">
-            <Link to="/">Go Back</Link>
-          </Button>
+          <br />
+          <Link to="/">
+            <Fab color="secondary" aria-label="add">
+              <ArrowBackIcon />
+            </Fab>
+          </Link>
         </form>
       </div>
     );

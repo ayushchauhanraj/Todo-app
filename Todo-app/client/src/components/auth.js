@@ -49,8 +49,13 @@ const Auth = ({ path, authenticate }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    authenticate(path, { userName, password });
+    if (userName.trim() && password.trim()) {
+      authenticate(path, { userName, password });
+    } else {
+      alert("! Input Valid data  ");
+      setPassword("");
+      setUserName("");
+    }
   };
 
   return (

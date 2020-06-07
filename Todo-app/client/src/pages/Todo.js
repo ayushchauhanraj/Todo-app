@@ -59,13 +59,30 @@ const Todo = ({ data, getTodoasync, deleteTodoasync, updateTodoasync }) => {
   const classes = useStyles();
 
   const HandleDelete = (id) => {
-    deleteTodoasync(id);
+    if (window.confirm("Are you sure to delete this task "))
+      deleteTodoasync(id);
   };
 
   const handleUpdate = (todo, val) => {
     todo[val] = !todo[val];
-
     updateTodoasync(todo._id, todo);
+  };
+
+  const calDays = (date) => {
+    let day =
+      (new Date(date).getTime() - new Date().getTime()) / (1000 * 3600 * 24);
+
+    let min = (
+      new Date(date).getMinutes() - new Date().getMinutes()
+    ).toString();
+
+    if (day > 0) {
+      return `${parseInt(day) + 1} Days remaining `;
+    } else if (min > 0) {
+      return `${min} Minutes remaining`;
+    } else {
+      return "Time is over !";
+    }
   };
 
   const showCard = data.length ? (
@@ -74,7 +91,7 @@ const Todo = ({ data, getTodoasync, deleteTodoasync, updateTodoasync }) => {
       .reverse()
       .map(
         (todo) => (
-          (todo.date = new Date(todo.date).toString().slice(0, 15)),
+          calDays(todo.date),
           (
             <div key={todo._id}>
               <Card className={classes.root} variant="outlined">
@@ -89,6 +106,7 @@ const Todo = ({ data, getTodoasync, deleteTodoasync, updateTodoasync }) => {
                         style={{
                           display: "flex",
                           alignItems: "center",
+                          color: "green",
                         }}
                       >
                         {todo.label}&nbsp;&nbsp;&nbsp; Completed
@@ -100,6 +118,7 @@ const Todo = ({ data, getTodoasync, deleteTodoasync, updateTodoasync }) => {
                         style={{
                           display: "flex",
                           alignItems: "center",
+                          color: "red",
                         }}
                       >
                         {todo.label}&nbsp;&nbsp;&nbsp;Pending
@@ -111,8 +130,8 @@ const Todo = ({ data, getTodoasync, deleteTodoasync, updateTodoasync }) => {
                   <Typography variant="h5" component="h2" color="secondary">
                     {todo.title}
                   </Typography>
-                  <Typography className={classes.pos} color="textSecondary">
-                    {todo.date}
+                  <Typography className={classes.pos}>
+                    {calDays(todo.date)}
                     <AlarmIcon />
                   </Typography>
                   <Typography variant="body2" component="p">
@@ -191,7 +210,16 @@ const Todo = ({ data, getTodoasync, deleteTodoasync, updateTodoasync }) => {
         )
       )
   ) : (
-    <h1>No Data</h1>
+    <h1
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        color: "red",
+      }}
+    >
+      No task !
+    </h1>
   );
   return <div>{showCard}</div>;
 };
